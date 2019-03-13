@@ -12,6 +12,10 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+
+
+
 // var StoreConstructor=function store(name, min_customers, max_customers, avg_cookie_sale, total_sales_per_hour) {
 
 //   this.name = name;
@@ -21,7 +25,7 @@ function getRandomIntInclusive(min, max) {
 //   this.total_sales_per_hour = total_sales_per_hour;
 // }
 
-// var PikeStore= new StoreConstructor('pikeMarket',23,65,6.3,
+// var PikeStore= new StoreConstructor('pikeMarket',23,65,6.3,total_sales_per_hours)
 
 var pikeMarket = {
   name: 'pikeMarket',
@@ -116,11 +120,12 @@ function renderEstSalesToPage(location) {
   pikeMarket_ul.appendChild(title_li);
 
   console.log('I am running to test' );
-
+  
   for (var i = 0; i < total_number_of_hours ; i++) {
     var new_li = document.createElement('li');
     var randomCustomersPerHour = getRandomIntInclusive(location.min_customers, location.max_customers);
-    new_li.textContent = `6 am ${i + 1} Cookies: ${randomCustomersPerHour}`;
+
+    new_li.textContent = `${hours[i]} Cookies: ${randomCustomersPerHour}`;
 
     // new_li.textContent = `Fight ${i + 1} damage: ${this.battle_damage_array[i]}`;
     //Template literal: uses a ` instead of a ' or "
