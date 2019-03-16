@@ -6,6 +6,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title> Document </title>
   <link rel="stylesheet" href="./css/style.css">
+  
+  <div class="bordered">
+      Please provide your selection here
+        <br></br>
+        <label for="name">Store:</label>
+      <input type="text" id="name" name="name" required
+             minlength="4" maxlength="8" size="10">
+      <label for="name">Max Cookies</label>
+      <input type="text" id="name" name="name" required
+             minlength="4" maxlength="4" size="3" >
+      <label for="name">Min Cookies</label>
+      <input type="text" id="name" name="name" required
+             minlength="4" maxlength="4" size="3">
+      <label for="name">Avg cookies</label>
+      <input type="text" id="name" name="name" required
+             minlength="4" maxlength="4" size="3">
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div class="fishbordered">
+      <img src="https://pixabay.com/vectors/fish-gray-grey-pink-underwater-576515/" alt="Salmon fish"  class="center">
+        </div class="bordered">
 </head>
 <body>
   <h1> Salmon Cookies</h1>
@@ -14,72 +38,17 @@
   <ul id="seattleCenter"></ul>
   <ul id="capitolHill"></ul>
   <ul id="alki"></ul>
-  <script src="./js/app.js"></script>
+  
 
   <table id="cookie-stores-table">
-      <tr>
-        <td>6am</td>
-        <td>7am</td>
-        <td>8am</td>
-        <td>9am</td>
-        <td>10am</td>
-        <td>11am</td>
-        <td>12pm</td>
-        <td>1pm</td>
-        <td>2pm</td>
-        <td>3pm</td>
-        <td>4pm</td>
-        <td>5pm</td>
-        <td>6pm</td>
-        <td>7pm</td>
-        <td>DailyLocationTotal</td>
-      </tr>
-      <tr>
-        <td>23</td>
-        <td>34</td>
-        <td>500</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-               
-        
-      </tr>
-      <tr>
-        <td>45</td>
-        <td>65</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-                
-      </tr>
-      <tr>
-          <td>15</td>
-          <td>12</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>      
 
-        </tr>
-          <tr>
-              <td>34</td>
-              <td>28</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <tr>
-                  <td>35</td>
-                  <td>23</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-
-              </tr>
-          </tr>
-      </tr>
+      
     </table>
+
+    <form id="cookie-stores-form">
+      <!-- put inputs that collect the store details you need -->
+      
+    </form>
+    <script src="./js/app.js"></script>
 </body>
 </html>
