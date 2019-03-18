@@ -90,10 +90,7 @@ function renderEstSalesToPage(location) {
   for (var i = 0; i < total_number_of_hours ; i++) {
     var new_li = document.createElement('li');
     var randomCustomersPerHour = getRandomIntInclusive(location.min_customers, location.max_customers);
-
     new_li.textContent = `${hours[i]} Cookies: ${randomCustomersPerHour}`;
-
-
     pikeMarket_ul.appendChild(new_li);
   }
 
@@ -187,7 +184,14 @@ console.log(storesArray);
 //This function will render the footer
 totalPerHourSum();
 
-var dailyTotal = pike.totalSales() + seatacAirport.totalSales() + seattleCenter.totalSales() + capitolHill.totalSales() + alki.totalSales();
+//var dailyTotal = pike.totalSales() + seatacAirport.totalSales() + seattleCenter.totalSales() + capitolHill.totalSales() + alki.totalSales();
+var dailyTotal=0;
+for (var i=0; i <storesArray.length; i++)
+{
+  dailyTotal= dailyTotal + storesArray[i].totalS;
+
+}
+
 var footer_tr = document.createElement('tr');
 var footer_td = document.createElement('td');
 footer_td.textContent = 'Total';
@@ -209,6 +213,7 @@ function salesColumnsTotals(locations, time) {
 }
 
 function runColumnTotals(){
+
   var total_sales_all = 0;
   for(var hour = 0; hour < hours.length; hour++ ){
 
@@ -225,10 +230,7 @@ function runColumnTotals(){
 
 //Build Table
 function totalPerHour(){
-
-
   build_Header(); // builds the header
-
   //use the array to render each store
   for(var i = 0; i < storesArray.length; i++){
     // debugger;
@@ -237,7 +239,64 @@ function totalPerHour(){
   // buildFooter();
 }
 
+function salesColumnsTotalsNewstore(locations, time) {
 
+  var sum = 0;
+  for(var locationPos = 0; locationPos < locations.length; locationPos++){
+    sum += storesArray[locationPos].total_sales_per_hour[time];
+  }
+  var dailyTotal_td = document.createElement('td');
+  dailyTotal_td.textContent = sum;
+  //footer_tr.appendChild(dailyTotal_td);
+  tableEl.appendChild(footer_tr);
+  //console.log(sum);
+  return sum;
+}
+
+function totalPerHourSumNewStore(newStoreArray)
+{
+  var sum = 0;
+
+  for (var n = 0; n < newStoreArray.length; n++) { // every hour
+  
+    // for (var i = 0; i < storesArray[n][4].length; i++) { // add all the totals
+    //   sum = sum + storesArray[n][4][i];
+    // }
+    newStoreArray[n].calculateSales();
+    hourlyTotalArray.push(sum);
+
+  }
+}
+function totalPerHourNewStore(newstore_array){
+   //build_Header(); // builds the header
+  //use the array to render each store
+  for(var i = 0; i < newstore_array.length; i++){
+    // debugger;
+    newstore_array[i].addRow();
+  }
+  // buildFooter();
+}
+
+
+  
+function runColumnTotalsNewStore(newstoreArray)
+{
+  var total_sales_all = 0;
+  hour=[];
+  for(var hour = 0; hour < hours.length; hour++ ){
+  
+    total_sales_all += salesColumnsTotalsNewstore(newstoreArray,hour);
+  }
+  // var getLastColumnTableElement = document.getElementById('hourlyTotalsForAllLocations');
+  console.log('Test',total_sales_all);
+  //var dailyTotal_td = document.createElement('td');
+ // dailyTotal_td.textContent = total_sales_all;
+  //footer_tr.appendChild(dailyTotal_td);
+  //tableEl.appendChild(footer_tr);
+
+
+
+}
 
 totalPerHour();
 runColumnTotals();
@@ -249,20 +308,45 @@ runColumnTotals();
 
 // 1. We need to reference the form in the javascript
 var storeForm = document.getElementById('cookie-stores-form');
-
 //2. Event Handler (function that will be called when the form submits)
 function handleMakeNewStore(event){
+
   event.preventDefault();
 
-
+  var store= document.getElementById('store').value;
+  var maxcust= document.getElementById('maxc').value;
+  var mincust= document.getElementById('minc').value;
+  var avgcookies= document.getElementById('avgc').value;
+  //location.reload(true);
   // collect data, then make a new cookie store with it
-  var test = new StoreConstructor('test Market', 23, 65, 6.3);
-  storesArray.push(test);
-  console.log(test);
+  var newstore = new StoreConstructor( store,mincust,maxcust,avgcookies);
+  var newlyaddedStore=[];// storesArray.slice(0);
+  newlyaddedStore.push (newstore);
+  console.log (newstore);
+  //location.reload(true);
+  //storesArray=[];
+  console.log(storesArray);
+  console.log (newstore);
+  
+  
+  // var tbl = document.getElementById('cookie-stores-table');
+  // if(tbl) tbl.innerHTML='';
+  //hourlyTotalArray=[];
+
+  totalPerHourSumNewStore(newlyaddedStore);
+  totalPerHourNewStore(newlyaddedStore);
+  runColumnTotalsNewStore(newlyaddedStore);
+
+  //clear storesArray and all the input textboxes after clicking the addstore button.
+  //storesArray=[];
+  document.getElementById('store').value='';
+  document.getElementById('maxc').value='';
+  document.getElementById('minc').value='';
+  document.getElementById('avgc').value='';
+
 }
 
-
-//3. connect the event handler function to the form 
+//3. connect the event handler function to the form
 storeForm.addEventListener('submit', handleMakeNewStore);
 
 

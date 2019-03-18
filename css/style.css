@@ -1,5 +1,5 @@
 body {
-  background: blueviolet;
+  background: rgb(102, 168, 168);
 } 
   .bordered {
     width: 700px;
@@ -8,18 +8,35 @@ body {
     border: 5px solid yellowgreen;
   }
    .fishbordered {
-    width: 300px;
-    height: 100px;
-   
+    width: 400px;
+    height: 250px;
     border: 2px solid yellowgreen;
+    
   }
   .center {
   display: block;
-  margin-left:100px;
-  margin-right: 10000px;
+  margin-left:300px;
+  margin-right: 50px;
   width: 50%;
-  display: block;
-  margin-left:100px;
-  margin-right: 10000px;
-  width: 50%;
+  }
+.buttonformat{
+  margin-left:300px;  
+
 }
+td {
+
+  border: 1px solid #0088dd;
+  padding: 15px; }
+  table.one {
+    empty-cells: show;}
+
+
+
+  }
+  
+
+
+
+
+
+

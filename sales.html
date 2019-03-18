@@ -4,9 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Cookies-store</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <script src=""
+  <fieldset>
+    <legend></legend>
+  
+  <form id="cookie-stores-form">
+      <!-- put inputs that collect the store details you need -->
+      
+      Please provide details for adding a new store
+        <br></br>
+        <label for="name">Store:</label>
+        <input type="text" id="store" name="store" required
+               minlength="4" maxlength="20" size="10">
+        <label for="name">Min</label>
+        <input type="text" id="minc" name="min_customers" required
+               minlength="1" maxlength="3" size="10" >
+        <label for="name">Max</label>
+        <input type="text" id="maxc" name="max_customers" required
+               minlength="1" maxlength="3" size="10">
+        <label for="name">Avg</label>
+        <input type="text" id="avgc" name="avg_cookie_sale" required
+               minlength="1" maxlength="3" size="10">
+               <button type="submit">Add store</button>
+
+</fieldset>
+
+    </form>
+    <h1 align="center"> Pat's Salmon Cookies </h1>
+
+      
+  <br><br>
+  <br><br>
+           
+</head>
+</body>
+<body>
+  <h2> Salmon Cookies</h2>
+  <ul id="pikeMarket"></ul>
+  <ul id="seaTacAirport"></ul>
+  <ul id="seattleCenter"></ul>
+  <ul id="capitolHill"></ul>
+  <ul id="alki"></ul>
+  
+
+  <table id="cookie-stores-table" class="one">
+
+      
+    </table>
+
+    <script src="./js/app.js"></script>
 </body>
 </html>
